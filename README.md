@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Portfolio
+
+A modern, full-stack portfolio application built with Next.js and Express.js.
+
+## Project Structure
+
+```
+Modern_Port/
+├── frontend/          # Next.js application
+│   ├── src/          # Source code (components, pages, API routes)
+│   ├── public/       # Static assets
+│   └── ...           # Next.js configuration files
+├── backend/          # Express.js API server
+│   ├── src/          # Backend source code
+│   └── ...           # Backend configuration files
+└── README.md
+```
 
 ## Getting Started
 
-First, run the development server:
+This project consists of two separate applications that work together:
 
+### Frontend (Next.js)
+
+1. Navigate to the frontend directory:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd frontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Backend (Express.js)
+
+1. Navigate to the backend directory:
+```bash
+cd backend
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run the development server:
+```bash
+npm run dev
+```
+
+The backend API will run on the configured port (check `backend/.env` for configuration).
+
+## Environment Variables
+
+- **Frontend**: Create a `.env.local` file in the `frontend/` directory
+- **Backend**: Create a `.env` file in the `backend/` directory
+
+Refer to the respective directories for required environment variables.
+
+## Development
+
+- Frontend uses Next.js 16 with App Router
+- Backend uses Express.js with TypeScript
+- Both applications can run concurrently during development
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Express.js Documentation](https://expressjs.com/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Frontend**: Deploy to [Vercel](https://vercel.com/new) or any Next.js-compatible platform
+- **Backend**: Deploy to any Node.js hosting service
