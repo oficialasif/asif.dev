@@ -45,7 +45,9 @@ export interface IProfile extends Document {
     email: string;
     phone: string;
     bio: string;
+    bioHtml?: string;
     about: string;
+    aboutHtml?: string;
 
     // Stats
     stats: {
@@ -86,8 +88,22 @@ const profileSchema = new Schema<IProfile>(
         location: { type: String },
         email: { type: String },
         phone: { type: String },
-        bio: { type: String },
-        about: { type: String },
+        bio: {
+            type: String,
+            default: ''
+        },
+        bioHtml: {
+            type: String,
+            default: ''
+        },
+        about: {
+            type: String,
+            default: ''
+        },
+        aboutHtml: {
+            type: String,
+            default: ''
+        },
 
         stats: {
             experience: { type: String, default: '0' },

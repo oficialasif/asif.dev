@@ -1,9 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Bell, Plus, Trash2, Edit } from 'lucide-react';
+import { Bell, Plus, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { api } from '@/lib/api';
+import dynamic from 'next/dynamic';
+
+// Dynamically import RichTextEditor to avoid SSR issues
+const RichTextEditor = dynamic(() => import('@/components/admin/RichTextEditor'), {
+    ssr: false,
+    loading: () => <div className="h-[200px] bg-[#0a0a0f] border border-purple-500/30 rounded-lg animate-pulse" />
+});
 
 export default function NoticeManagementPage() {
     const [notices, setNotices] = useState<any[]>([]);
@@ -30,7 +37,7 @@ export default function NoticeManagementPage() {
         }
 
         try {
-            await api.notices.create({ text: formData.text });
+            await api.notices.create({ text: formData.text, contentType: 'html' });
             toast.success('Notice added successfully!');
             setFormData({ text: '' });
             fetchNotices();
@@ -69,14 +76,12 @@ export default function NoticeManagementPage() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-purple-100 mb-2">
-                            Notice Text
+                            Notice Content (with Highlights!)
                         </label>
-                        <input
-                            type="text"
-                            value={formData.text}
-                            onChange={(e) => setFormData({ text: e.target.value })}
-                            className="w-full px-4 py-3 bg-[#0a0a0f] border border-purple-500/30 rounded-lg text-white focus:border-purple-500 focus:outline-none"
-                            placeholder="Enter announcement text (emojis supported: 🎉 🚀 💼 📚 ✨)"
+                        <RichTextEditor
+                            content={formData.text}
+                            onChange={(html) => setFormData({ text: html })}
+                            placeholder="Enter announcement text..."
                         />
                     </div>
 
@@ -123,7 +128,7 @@ export default function NoticeManagementPage() {
             {/* Info */}
             <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
                 <p className="text-blue-100/80 text-sm">
-                    <strong>💡 Tip:</strong> Notices will auto-scroll on the homepage. Keep them concise and engaging!
+                    <strong>💡 Tip:</strong> Use the toolbar to highlight important text,  add circles, underlines, and more! Notices will auto-scroll on the homepage.
                 </p>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 import { Card } from "./Card";
 import { Bell } from "lucide-react";
+import ContentRenderer from './ContentRenderer';
 
 import { api } from "@/lib/api";
 import { useState, useEffect } from "react";
@@ -52,12 +53,12 @@ export const NoticeCard = () => {
                 {/* Scrolling text */}
                 <div className="flex whitespace-nowrap animate-scroll-horizontal">
                     {/* First copy */}
-                    <span className="text-purple-100/90 text-lg font-notice px-4">
-                        {noticeText}
+                    <span className="text-purple-100/90 text-lg font-notice px-4 inline-flex items-center">
+                        <ContentRenderer html={noticeText} />
                     </span>
                     {/* Second copy for seamless loop */}
-                    <span className="text-purple-100/90 text-lg font-notice px-4">
-                        {noticeText}
+                    <span className="text-purple-100/90 text-lg font-notice px-4 inline-flex items-center">
+                        <ContentRenderer html={noticeText} />
                     </span>
                 </div>
             </div>

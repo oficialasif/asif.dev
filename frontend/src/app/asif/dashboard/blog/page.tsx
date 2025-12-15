@@ -4,6 +4,13 @@ import { useState, useEffect } from 'react';
 import { BookOpen, Plus, Trash2, Edit } from 'lucide-react';
 import { toast } from 'sonner';
 import { api } from '@/lib/api';
+import dynamic from 'next/dynamic';
+
+// Dynamically import RichTextEditor to avoid SSR issues
+const RichTextEditor = dynamic(() => import('@/components/admin/RichTextEditor'), {
+    ssr: false,
+    loading: () => <div className="h-[300px] bg-[#0a0a0f] border border-purple-500/30 rounded-lg animate-pulse" />
+});
 
 
 export default function BlogManagementPage() {
@@ -98,14 +105,12 @@ export default function BlogManagementPage() {
 
                     <div>
                         <label className="block text-sm font-medium text-purple-100 mb-2">
-                            Content
+                            Content (with Highlights!)
                         </label>
-                        <textarea
-                            value={formData.content}
-                            onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                            className="w-full px-4 py-3 bg-[#0a0a0f] border border-purple-500/30 rounded-lg text-white focus:border-purple-500 focus:outline-none"
-                            placeholder="Full blog content (supports markdown)"
-                            rows={8}
+                        <RichTextEditor
+                            content={formData.content}
+                            onChange={(html) => setFormData({ ...formData, content: html })}
+                            placeholder="Write your blog post content..."
                         />
                     </div>
 
