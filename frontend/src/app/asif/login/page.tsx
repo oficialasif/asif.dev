@@ -144,13 +144,6 @@ export default function AdminLoginPage() {
                             {isLoading ? 'Logging in...' : 'Login'}
                         </button>
                     </form>
-
-                    {/* Default Credentials Info */}
-                    <div className="mt-6 p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                        <p className="text-xs text-gray-400 text-center">
-                            Default: <span className="text-purple-300">asifmahmud053@gmail.com</span> / <span className="text-purple-300">asif*admin.port</span>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
