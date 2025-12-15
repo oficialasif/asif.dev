@@ -20,10 +20,10 @@ export const Sidebar = () => {
     const pathname = usePathname();
 
     return (
-        <aside className="w-72 h-screen bg-[#0D081A] border-r border-purple-600/20 p-4 flex flex-col gap-3 overflow-y-auto dashboard-scroll">
+        <aside className="w-72 h-screen bg-[color:var(--color-background)] border-r border-[color:var(--color-purple-border)] p-4 flex flex-col gap-3 overflow-y-auto dashboard-scroll">
             {/* Profile Section */}
             <div
-                className="bg-[#0a0514] border-2 border-purple-600/50 rounded-2xl p-4 flex flex-col items-center gap-3 hover:border-purple-500/70 transition-all duration-300 hover:shadow-[0_0_20px_rgba(137,42,220,0.3)]"
+                className="bg-[color:var(--color-background)] border-2 border-[color:var(--color-purple-border)] rounded-2xl p-4 flex flex-col items-center gap-3 hover:border-[color:var(--color-purple-border-hover)] transition-all duration-300 hover:shadow-[0_0_20px_var(--color-glow)]"
                 suppressHydrationWarning
             >
                 <div
@@ -55,10 +55,10 @@ export const Sidebar = () => {
                             key={item.href}
                             href={item.href}
                             className={cn(
-                                "group relative bg-[#0a0514] border-2 rounded-xl p-3 flex items-center gap-3 transition-all duration-300",
+                                "group relative bg-[color:var(--color-background)] border-2 rounded-xl p-3 flex items-center gap-3 transition-all duration-300",
                                 isActive
-                                    ? "border-purple-500 shadow-[0_0_20px_rgba(137,42,220,0.5)]"
-                                    : "border-purple-600/40 hover:border-purple-500/70 hover:shadow-[0_0_15px_rgba(137,42,220,0.3)]"
+                                    ? "border-purple-500 shadow-[0_0_20px_var(--color-glow-strong)]"
+                                    : "border-[color:var(--color-purple-border)] hover:border-[color:var(--color-purple-border-hover)] hover:shadow-[0_0_15px_var(--color-glow)]"
                             )}
                             suppressHydrationWarning
                         >

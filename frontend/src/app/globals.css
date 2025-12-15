@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "../components/highlight/highlight.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -19,6 +20,13 @@
 
   --color-accent: #c084fc;
   --color-accent-foreground: #0a0514;
+
+  /* Glow and shadow colors for effects */
+  --color-glow: rgba(137, 42, 220, 0.3);
+  --color-glow-strong: rgba(137, 42, 220, 0.5);
+  --color-shadow: rgba(46, 24, 78, 0.6);
+  --color-purple-border: rgba(167, 139, 250, 0.4);
+  --color-purple-border-hover: rgba(167, 139, 250, 0.7);
 
   --animate-spotlight: spotlight 2s ease .75s 1 forwards;
 
@@ -305,6 +313,11 @@ body {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-code: 'Fira Code', monospace;
+  --font-notice: 'Inter', sans-serif;
 }
 
 .dark {
@@ -347,6 +360,17 @@ body {
   }
   body {
     @apply text-foreground;
+    font-family: var(--font-body);
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+  code, pre, kbd, samp {
+    font-family: var(--font-code);
+  }
+}
+
+@utility font-notice {
+  font-family: var(--font-notice);
 }
 

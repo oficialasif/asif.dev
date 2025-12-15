@@ -19,7 +19,7 @@ export const ContentArea = ({
     enableMagnetism = true
 }: ContentAreaProps) => {
     return (
-        <main className="flex-1 bg-[#0D081A] p-6 h-screen flex flex-col">
+        <main className="flex-1 bg-[color:var(--color-background)] p-6 h-screen flex flex-col">
             <div className="max-w-6xl mx-auto flex flex-col h-full w-full">
                 {/* Page Header - Fixed */}
                 {(title || description) && (
@@ -39,7 +39,7 @@ export const ContentArea = ({
                 <div className="flex-1 min-h-0">
                     <Card
                         className={cn(
-                            "bg-[#0a0514] border-2 border-purple-600/50 h-full flex flex-col",
+                            "bg-[color:var(--color-background)] border-2 border-[color:var(--color-purple-border)] h-full flex flex-col",
                             className
                         )}
                         enableMagnetism={enableMagnetism}

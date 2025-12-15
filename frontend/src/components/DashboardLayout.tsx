@@ -9,7 +9,7 @@ interface DashboardLayoutProps {
 
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
     return (
-        <div className="flex h-screen overflow-hidden bg-[#0D081A]">
+        <div className="flex h-screen overflow-hidden bg-[color:var(--color-background)]">
             <Sidebar />
             <div className="flex-1 overflow-y-auto dashboard-scroll">
                 {children}

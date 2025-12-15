@@ -30,7 +30,13 @@ export const NoticeCard = () => {
 
 
     return (
-        <Card className="bg-[#0a0514] border-2 border-purple-600/50 h-full w-full p-6 overflow-hidden relative">
+        <Card
+            className="border-2 h-full w-full p-6 overflow-hidden relative"
+            style={{
+                background: 'var(--color-background)',
+                borderColor: 'var(--color-purple-border)'
+            }}
+        >
             {/* Header */}
             <div className="flex items-center gap-2 mb-4">
                 <Bell className="w-5 h-5 text-purple-400 animate-pulse" />
@@ -46,11 +52,11 @@ export const NoticeCard = () => {
                 {/* Scrolling text */}
                 <div className="flex whitespace-nowrap animate-scroll-horizontal">
                     {/* First copy */}
-                    <span className="text-purple-100/90 text-lg font-medium px-4">
+                    <span className="text-purple-100/90 text-lg font-notice px-4">
                         {noticeText}
                     </span>
                     {/* Second copy for seamless loop */}
-                    <span className="text-purple-100/90 text-lg font-medium px-4">
+                    <span className="text-purple-100/90 text-lg font-notice px-4">
                         {noticeText}
                     </span>
                 </div>

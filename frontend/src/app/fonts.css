@@ -1,0 +1,78 @@
+/* Custom Fonts */
+@font-face {
+  font-family: 'ByteBounce';
+  src: url('/fonts/ByteBounce.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Daffiys';
+  src: url('/fonts/Daffiys.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Early Quake';
+  src: url('/fonts/Early Quake DEMO.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Higher Jump';
+  src: url('/fonts/Higher Jump.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kultum Ramadhan';
+  src: url('/fonts/Kultum Ramadhan.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Medino';
+  src: url('/fonts/Medino-Regular.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Orange Avenue';
+  src: url('/fonts/OrangeAvenueOutlineDEMO-Regular.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Primor Stylish';
+  src: url('/fonts/PrimorStylish.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rostex';
+  src: url('/fonts/Rostex-Oblique.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rostex Outline';
+  src: url('/fonts/Rostex-ObliqueOutline.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sprintura';
+  src: url('/fonts/Sprintura Demo.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Thunky';
+  src: url('/fonts/Thunky DEMO.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zaslia';
+  src: url('/fonts/Zaslia.otf') format('opentype');
+  font-display: swap;
+}

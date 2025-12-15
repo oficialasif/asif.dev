@@ -1,0 +1,239 @@
+/* Highlight Animations */
+@keyframes highlight-draw {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+@keyframes highlight-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes highlight-glow {
+  0%, 100% {
+    filter: brightness(1);
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    filter: brightness(1.2);
+    box-shadow: 0 0 15px currentColor;
+  }
+}
+
+.animate-highlight-draw {
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  animation: highlight-draw 0.8s ease-out forwards;
+}
+
+.animate-highlight-pulse {
+  animation: highlight-pulse 2s ease-in-out infinite;
+}
+
+.animate-highlight-glow {
+  animation: highlight-glow 2s ease-in-out infinite;
+}
+
+.highlight-marker {
+  background-image: linear-gradient(transparent 30%, currentColor 30%, currentColor 70%, transparent 70%);
+  background-repeat: repeat-x;
+  background-size: 100% 100%;
+}
+
+/* Underline Animations */
+@keyframes underline-draw {
+  from {
+    text-decoration-color: transparent;
+  }
+  to {
+    text-decoration-color: currentColor;
+  }
+}
+
+@keyframes underline-wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-1px);
+  }
+  75% {
+    transform: translateY(1px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-underline-draw {
+  text-decoration-color: transparent;
+  animation: underline-draw 0.6s ease-out forwards;
+}
+
+.animate-underline-wave {
+  animation: underline-wave 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.underline-gradient {
+  position: relative;
+  text-decoration: none;
+}
+
+.underline-gradient::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #a78bfa, #ec4899, #a78bfa);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Notice Animations */
+@keyframes notice-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-notice-entrance {
+  animation: notice-entrance 0.4s ease-out;
+}
+
+/* Circle Animations */
+@keyframes circle-draw {
+  from {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes circle-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes circle-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-circle-draw path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: circle-draw 1.2s ease-out forwards;
+}
+
+.animate-circle-pulse path {
+  animation: circle-pulse 2s ease-in-out infinite;
+}
+
+.animate-circle-bounce {
+  animation: circle-bounce 1s ease-in-out infinite;
+}
+
+/* Marker Line Animations */
+@keyframes marker-draw {
+  from {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+  }
+  to {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes marker-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-marker-draw path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: marker-draw 0.8s ease-out forwards;
+}
+
+.animate-marker-pulse path {
+  animation: marker-pulse 2s ease-in-out infinite;
+}
+
+/* Accessibility: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-highlight-draw,
+  .animate-highlight-pulse,
+  .animate-highlight-glow,
+  .animate-underline-draw,
+  .animate-underline-wave,
+  .animate-shimmer,
+  .animate-notice-entrance,
+  .animate-circle-draw,
+  .animate-circle-pulse,
+  .animate-circle-bounce,
+  .animate-marker-draw,
+  .animate-marker-pulse {
+    animation: none;
+  }
+  
+  .animate-highlight-draw {
+    background-size: 100% 100%;
+  }
+  
+  .animate-underline-draw {
+    text-decoration-color: currentColor;
+  }
+}

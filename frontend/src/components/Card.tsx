@@ -28,11 +28,13 @@ const createParticleElement = (x: number, y: number, color: string = DEFAULT_GLO
 export const Card = ({
     children,
     className,
+    style,
     enableAnimations = true,
     enableMagnetism = true,
 }: {
     children: React.ReactNode;
     className?: string;
+    style?: React.CSSProperties;
     enableAnimations?: boolean;
     enableMagnetism?: boolean;
 }) => {
@@ -236,6 +238,7 @@ export const Card = ({
             style={{
                 '--glow-x': '50%',
                 '--glow-y': '50%',
+                ...style,
             } as React.CSSProperties}
         >
             <div className="relative z-10 h-full" suppressHydrationWarning>{children}</div>

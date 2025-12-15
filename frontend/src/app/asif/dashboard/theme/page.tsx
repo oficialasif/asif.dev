@@ -6,18 +6,21 @@ import { toast } from 'sonner';
 import { Save, RotateCcw, Upload, Image as ImageIcon, Sparkles, Type, Palette as PaletteIcon, MousePointer2 } from 'lucide-react';
 import Image from 'next/image';
 
-const PREMIUM_FONTS = [
-    'Inter',
-    'Roboto',
-    'Poppins',
-    'Montserrat',
-    'Lato',
-    'Open Sans',
-    'Playfair Display',
-    'Merriweather',
-    'Space Grotesk',
-    'Outfit',
-    'Fira Code'
+const availableFonts = [
+    { name: 'Default (Inter)', value: "'Inter', sans-serif" },
+    { name: 'ByteBounce', value: "'ByteBounce', sans-serif" },
+    { name: 'Daffiys', value: "'Daffiys', sans-serif" },
+    { name: 'Early Quake', value: "'Early Quake', sans-serif" },
+    { name: 'Higher Jump', value: "'Higher Jump', sans-serif" },
+    { name: 'Kultum Ramadhan', value: "'Kultum Ramadhan', sans-serif" },
+    { name: 'Medino', value: "'Medino', sans-serif" },
+    { name: 'Orange Avenue', value: "'Orange Avenue', sans-serif" },
+    { name: 'Primor Stylish', value: "'Primor Stylish', sans-serif" },
+    { name: 'Rostex', value: "'Rostex', sans-serif" },
+    { name: 'Rostex Outline', value: "'Rostex Outline', sans-serif" },
+    { name: 'Sprintura', value: "'Sprintura', sans-serif" },
+    { name: 'Thunky', value: "'Thunky', sans-serif" },
+    { name: 'Zaslia', value: "'Zaslia', sans-serif" },
 ];
 
 export default function ThemeCustomizationPage() {
@@ -251,45 +254,62 @@ export default function ThemeCustomizationPage() {
                     <div>
                         <label className="block text-sm font-medium text-gray-300 mb-2">Heading Font</label>
                         <select
-                            value={theme.fonts?.heading || 'Inter'}
+                            value={theme.fonts?.heading || "'Inter', sans-serif"}
                             onChange={(e) => setTheme({
                                 ...theme,
                                 fonts: { ...theme.fonts, heading: e.target.value }
                             })}
                             className="w-full px-4 py-3 bg-[#0a0a0f] border border-purple-500/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                         >
-                            {PREMIUM_FONTS.map(font => (
-                                <option key={font} value={font}>{font}</option>
+                            {availableFonts.map(font => (
+                                <option key={font.name} value={font.value} style={{ fontFamily: font.value }}>{font.name}</option>
                             ))}
                         </select>
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-300 mb-2">Body Font</label>
                         <select
-                            value={theme.fonts?.body || 'Inter'}
+                            value={theme.fonts?.body || "'Inter', sans-serif"}
                             onChange={(e) => setTheme({
                                 ...theme,
                                 fonts: { ...theme.fonts, body: e.target.value }
                             })}
                             className="w-full px-4 py-3 bg-[#0a0a0f] border border-purple-500/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                         >
-                            {PREMIUM_FONTS.map(font => (
-                                <option key={font} value={font}>{font}</option>
+                            {availableFonts.map(font => (
+                                <option key={font.name} value={font.value} style={{ fontFamily: font.value }}>{font.name}</option>
                             ))}
                         </select>
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Code Font (Monospace)</label>
-                        <input
-                            type="text"
-                            value={theme.fonts?.code || ''}
+                        <label className="block text-sm font-medium text-gray-300 mb-2">Code Font</label>
+                        <select
+                            value={theme.fonts?.code || "'Fira Code', monospace"}
                             onChange={(e) => setTheme({
                                 ...theme,
                                 fonts: { ...theme.fonts, code: e.target.value }
                             })}
                             className="w-full px-4 py-3 bg-[#0a0a0f] border border-purple-500/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            placeholder="Fira Code, monospace"
-                        />
+                        >
+                            {availableFonts.map(font => (
+                                <option key={font.name} value={font.value} style={{ fontFamily: font.value }}>{font.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-300 mb-2">Notice Font</label>
+                        <select
+                            value={theme.fonts?.notice || "'Inter', sans-serif"}
+                            onChange={(e) => setTheme({
+                                ...theme,
+                                fonts: { ...theme.fonts, notice: e.target.value }
+                            })}
+                            className="w-full px-4 py-3 bg-[#0a0a0f] border border-purple-500/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        >
+                            {availableFonts.map(font => (
+                                <option key={font.name} value={font.value} style={{ fontFamily: font.value }}>{font.name}</option>
+                            ))}
+                        </select>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import Notice from '../models/Notice';
 import { ApiError } from '../middleware/error.middleware';
 
-export const getAllNotices = async (req: Request, res: Response, next: NextFunction) => {
+export const getAllNotices = async (_req: Request, res: Response, next: NextFunction) => {
     try {
         const notices = await Notice.find({ isActive: true }).sort({ priority: 1, createdAt: -1 });
         res.status(200).json({

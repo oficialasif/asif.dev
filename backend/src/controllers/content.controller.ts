@@ -7,7 +7,7 @@ import { asyncHandler } from '../middleware/error.middleware';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 // Music Controllers
-export const getMusic = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+export const getMusic = asyncHandler(async (_req: Request, res: Response): Promise<void> => {
     const music = await Music.find().sort({ order: 1, createdAt: -1 });
     res.status(200).json({ success: true, count: music.length, data: { music } });
 });
@@ -36,7 +36,7 @@ export const deleteMusic = asyncHandler(async (req: AuthRequest, res: Response):
 });
 
 // Interest Controllers
-export const getInterests = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+export const getInterests = asyncHandler(async (_req: Request, res: Response): Promise<void> => {
     const interests = await Interest.find().sort({ order: 1, createdAt: -1 });
     res.status(200).json({ success: true, count: interests.length, data: { interests } });
 });
@@ -65,7 +65,7 @@ export const deleteInterest = asyncHandler(async (req: AuthRequest, res: Respons
 });
 
 // Theme Controllers
-export const getTheme = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+export const getTheme = asyncHandler(async (_req: Request, res: Response): Promise<void> => {
     const theme = await Theme.findOne({ isActive: true });
     if (!theme) {
         res.status(404).json({ success: false, message: 'No active theme found' });
@@ -84,14 +84,14 @@ export const updateTheme = asyncHandler(async (req: AuthRequest, res: Response):
     res.status(200).json({ success: true, message: 'Theme updated successfully', data: { theme } });
 });
 
-export const resetTheme = asyncHandler(async (req: AuthRequest, res: Response): Promise<void> => {
+export const resetTheme = asyncHandler(async (_req: AuthRequest, res: Response): Promise<void> => {
     await Theme.deleteMany({});
     const theme = await Theme.create({ name: 'Default Theme', isActive: true, isDefault: true });
     res.status(200).json({ success: true, message: 'Theme reset to default', data: { theme } });
 });
 
 // Site Settings Controllers
-export const getSettings = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+export const getSettings = asyncHandler(async (_req: Request, res: Response): Promise<void> => {
     let settings = await SiteSettings.findOne();
     if (!settings) {
         settings = await SiteSettings.create({});

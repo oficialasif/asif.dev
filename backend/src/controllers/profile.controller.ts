@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { Profile } from '../models/Profile';
 import { asyncHandler } from '../middleware/error.middleware';
 import { AuthRequest } from '../middleware/auth.middleware';
-import { uploadMultipleToCloudinary, deleteFromCloudinary } from '../utils/cloudinary';
+import { uploadMultipleToCloudinary } from '../utils/cloudinary';
 import fs from 'fs';
 
 /**
@@ -10,7 +10,7 @@ import fs from 'fs';
  * @desc    Get profile data (Singleton)
  * @access  Public
  */
-export const getProfile = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+export const getProfile = asyncHandler(async (_req: Request, res: Response): Promise<void> => {
     let profile = await Profile.findOne();
 
     if (!profile) {

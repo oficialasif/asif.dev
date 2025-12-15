@@ -17,6 +17,7 @@ export interface IThemeFonts {
     heading: string;
     body: string;
     code: string;
+    notice: string;
 }
 
 export interface IThemeEffects {
@@ -70,6 +71,7 @@ const themeSchema = new Schema<ITheme>(
             heading: { type: String, default: 'Inter, sans-serif' },
             body: { type: String, default: 'Inter, sans-serif' },
             code: { type: String, default: 'Fira Code, monospace' },
+            notice: { type: String, default: 'Inter, sans-serif' },
         },
         effects: {
             borderRadius: { type: String, default: '1.5rem' },

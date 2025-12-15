@@ -30,73 +30,85 @@ export default function DynamicThemeProvider({
     const applyTheme = (theme: any) => {
         const root = document.documentElement;
 
-        // Apply Colors
+        // Apply Colors - Map backend theme colors to all CSS variables
         if (theme.colors) {
-            Object.entries(theme.colors).forEach(([key, value]) => {
-                const colorValue = value as string;
+            const colors = theme.colors;
 
-                // Map generic keys to specific CSS variables used in globals.css
-                // We set both the standard generic var and the specific --color-* var
+            // Primary color
+            if (colors.primary) {
+                root.style.setProperty('--primary', colors.primary);
+                root.style.setProperty('--color-primary', colors.primary);
+            }
 
-                if (key === 'primary') {
-                    root.style.setProperty('--primary', colorValue);
-                    root.style.setProperty('--color-primary', colorValue);
-                    // Also enable these to be used with opacity if possible, but for now simple hex
-                }
-                else if (key === 'secondary') {
-                    root.style.setProperty('--secondary', colorValue);
-                    root.style.setProperty('--color-secondary', colorValue);
-                }
-                else if (key === 'accent') {
-                    root.style.setProperty('--accent', colorValue);
-                    root.style.setProperty('--color-accent', colorValue);
-                }
-                else if (key === 'background') {
-                    root.style.setProperty('--background', colorValue);
-                    root.style.setProperty('--color-background', colorValue);
-                    // Update body background directly just in case
-                    document.body.style.background = colorValue;
-                }
-                else if (key === 'text') {
-                    root.style.setProperty('--foreground', colorValue);
-                    root.style.setProperty('--color-foreground', colorValue);
-                    document.body.style.color = colorValue;
-                }
-                else if (key === 'cardBackground') {
-                    root.style.setProperty('--color-card', colorValue);
-                    root.style.setProperty('--card', colorValue);
-                }
-                else {
-                    // Fallback for other keys
-                    root.style.setProperty(`--${key}`, colorValue);
-                    root.style.setProperty(`--color-${key}`, colorValue);
-                }
-            });
+            // Secondary color
+            if (colors.secondary) {
+                root.style.setProperty('--secondary', colors.secondary);
+                root.style.setProperty('--color-secondary', colors.secondary);
+            }
+
+            // Accent color
+            if (colors.accent) {
+                root.style.setProperty('--accent', colors.accent);
+                root.style.setProperty('--color-accent', colors.accent);
+            }
+
+            // Background color
+            if (colors.background) {
+                root.style.setProperty('--background', colors.background);
+                root.style.setProperty('--color-background', colors.background);
+                document.body.style.background = colors.background;
+            }
+
+            // Background secondary
+            if (colors.backgroundSecondary) {
+                root.style.setProperty('--background-secondary', colors.backgroundSecondary);
+                root.style.setProperty('--color-background-secondary', colors.backgroundSecondary);
+            }
+
+            // Text/Foreground color
+            if (colors.text) {
+                root.style.setProperty('--foreground', colors.text);
+                root.style.setProperty('--color-foreground', colors.text);
+                document.body.style.color = colors.text;
+            }
+
+            // Text secondary
+            if (colors.textSecondary) {
+                root.style.setProperty('--text-secondary', colors.textSecondary);
+                root.style.setProperty('--color-text-secondary', colors.textSecondary);
+                root.style.setProperty('--muted-foreground', colors.textSecondary);
+            }
+
+            // Border color
+            if (colors.border) {
+                root.style.setProperty('--border', colors.border);
+                root.style.setProperty('--color-border', colors.border);
+            }
+
+            // Card background
+            if (colors.cardBackground) {
+                root.style.setProperty('--card', colors.cardBackground);
+                root.style.setProperty('--color-card', colors.cardBackground);
+            }
+
+            // Card hover
+            if (colors.cardHover) {
+                root.style.setProperty('--card-hover', colors.cardHover);
+                root.style.setProperty('--color-card-hover', colors.cardHover);
+            }
         }
 
         // Apply Fonts
-        if (theme.fonts) {
-            Object.entries(theme.fonts).forEach(([key, value]) => {
-                const fontValue = value as string;
-                if (!fontValue) return;
+        const fonts = theme.fonts || {};
+        const headingFont = fonts.heading || "'Inter', sans-serif";
+        const bodyFont = fonts.body || "'Inter', sans-serif";
+        const codeFont = fonts.code || "'Fira Code', monospace";
+        const noticeFont = fonts.notice || "'Inter', sans-serif";
 
-                const fontName = fontValue.split(',')[0].replace(/['"]/g, '').trim();
-                const link = document.createElement('link');
-                link.href = `https://fonts.googleapis.com/css2?family=${fontName.replace(/ /g, '+')}:wght@300;400;500;600;700&display=swap`;
-                link.rel = 'stylesheet';
-                document.head.appendChild(link);
-
-                // Set variable
-                if (key === 'body') {
-                    root.style.setProperty('--font-sans', fontValue);
-                    document.body.style.fontFamily = fontValue;
-                } else if (key === 'heading') {
-                    root.style.setProperty('--font-heading', fontValue);
-                } else if (key === 'code') {
-                    root.style.setProperty('--font-mono', fontValue);
-                }
-            });
-        }
+        root.style.setProperty('--font-heading', headingFont);
+        root.style.setProperty('--font-body', bodyFont);
+        root.style.setProperty('--font-code', codeFont);
+        root.style.setProperty('--font-notice', noticeFont);
 
         // Apply Favicon - Only if explicitly set in theme
         if (theme.faviconUrl && theme.faviconUrl.trim() !== '') {

@@ -18,7 +18,7 @@ export const ProfileCard = () => {
 
   return (
     <div onClick={handleCardClick} className="block h-full cursor-pointer">
-      <Card className="bg-[#0a0514] border-2 border-purple-600/50 flex flex-col justify-center items-center text-center h-full hover:border-purple-500/70 transition-all duration-300">
+      <Card className="bg-[color:var(--color-background)] border-2 border-[color:var(--color-purple-border)] flex flex-col justify-center items-center text-center h-full hover:border-[color:var(--color-purple-border-hover)] transition-all duration-300">
         <div className="relative w-32 h-32 mb-4 mx-auto rounded-full overflow-hidden border-4 border-purple-600/30">
           <Image
             src="/profile.jpg"

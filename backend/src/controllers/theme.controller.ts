@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import { Theme, ITheme } from '../models/Theme';
+import { Theme } from '../models/Theme';
 import { ApiError } from '../middleware/error.middleware';
 import { uploadToCloudinary } from '../utils/cloudinary';
 
-export const getTheme = async (req: Request, res: Response, next: NextFunction) => {
+export const getTheme = async (_req: Request, res: Response, next: NextFunction) => {
     try {
         let theme = await Theme.findOne({ isActive: true });
 
@@ -43,35 +43,30 @@ export const updateTheme = async (req: Request, res: Response, next: NextFunctio
 
         // Handle File Upload for Favicon
         if (req.file) {
-            const result = await uploadToCloudinary(req.file.buffer);
+            const result = await uploadToCloudinary(req.file);
             req.body.faviconUrl = result.secure_url;
         }
 
         // Update fields
-        // We use $set to allow partial updates of nested objects like colors/fonts
+        // The frontend sends flattened keys like "colors.primary", "fonts.heading" via FormData
+        // We need to convert these into MongoDB update format
         const updates: any = {};
 
-        // Helper to flatten nested objects for MongoDB update
-        const flattenObject = (obj: any, prefix = '') => {
-            Object.keys(obj).forEach(key => {
-                if (typeof obj[key] === 'object' && obj[key] !== null) {
-                    flattenObject(obj[key], `${prefix}${key}.`);
-                } else {
-                    updates[`${prefix}${key}`] = obj[key];
+        // Process all keys from req.body
+        Object.keys(req.body).forEach(key => {
+            // If key contains a dot, it's already flattened (e.g., "colors.primary")
+            if (key.includes('.')) {
+                updates[key] = req.body[key];
+            } else {
+                // Direct field
+                if (key === 'enableAnimations') {
+                    // Convert string to boolean
+                    updates[key] = req.body[key] === 'true' || req.body[key] === true;
+                } else if (key === 'scrollAnimation' || key === 'faviconUrl') {
+                    updates[key] = req.body[key];
                 }
-            });
-        };
-
-        // If body has nested structures like colors: { primary: ... }
-        if (req.body.colors) flattenObject(req.body.colors, 'colors.');
-        if (req.body.fonts) flattenObject(req.body.fonts, 'fonts.');
-        if (req.body.effects) flattenObject(req.body.effects, 'effects.');
-        if (req.body.gradients) flattenObject(req.body.gradients, 'gradients.');
-
-        // Direct fields
-        if (req.body.enableAnimations !== undefined) updates.enableAnimations = req.body.enableAnimations;
-        if (req.body.scrollAnimation !== undefined) updates.scrollAnimation = req.body.scrollAnimation;
-        if (req.body.faviconUrl !== undefined) updates.faviconUrl = req.body.faviconUrl;
+            }
+        });
 
         theme = await Theme.findByIdAndUpdate(
             theme._id,
@@ -88,7 +83,7 @@ export const updateTheme = async (req: Request, res: Response, next: NextFunctio
     }
 };
 
-export const resetTheme = async (req: Request, res: Response, next: NextFunction) => {
+export const resetTheme = async (_req: Request, res: Response, next: NextFunction) => {
     try {
         // Delete current active theme if it's not default
         await Theme.deleteMany({ isDefault: false });

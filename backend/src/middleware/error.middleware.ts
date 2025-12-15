@@ -21,7 +21,7 @@ export const errorHandler = (
     err: ApiError,
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ): void => {
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal Server Error';
@@ -49,7 +49,7 @@ export const errorHandler = (
 /**
  * Handle 404 errors
  */
-export const notFound = (req: Request, res: Response, next: NextFunction): void => {
+export const notFound = (req: Request, _res: Response, next: NextFunction): void => {
     const error = new ApiError(404, `Not Found - ${req.originalUrl}`);
     next(error);
 };

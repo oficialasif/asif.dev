@@ -5,7 +5,7 @@ import { Music } from '../models/Music';
 import { Interest } from '../models/Interest';
 import { asyncHandler } from '../middleware/error.middleware';
 
-export const getStats = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+export const getStats = asyncHandler(async (_req: Request, res: Response): Promise<void> => {
     const [projectsCount, galleryCount, musicCount, interestsCount] = await Promise.all([
         Project.countDocuments(),
         Gallery.countDocuments(),
@@ -29,7 +29,7 @@ export const getStats = asyncHandler(async (req: Request, res: Response): Promis
     });
 });
 
-export const getAnalytics = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+export const getAnalytics = asyncHandler(async (_req: Request, res: Response): Promise<void> => {
     // Get projects by technology
     const projects = await Project.find();
     const techCount: { [key: string]: number } = {};
