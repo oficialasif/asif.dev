@@ -257,13 +257,13 @@ export default function ProfilePage() {
 
     return (
         <DashboardLayout>
-            <div className="space-y-8 p-6">
+            <div className="space-y-4 sm:space-y-8 p-3 sm:p-4 md:p-6 pt-16 lg:pt-6">
                 {/* Profile Header */}
-                <Card className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border border-purple-500/30 rounded-2xl p-8" enableMagnetism={false}>
-                    <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                <Card className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border border-purple-500/30 rounded-2xl p-4 sm:p-6 md:p-8" enableMagnetism={false}>
+                    <div className="flex flex-col gap-6 sm:gap-8 items-center">
                         {/* Profile Photo */}
                         <div className="relative">
-                            <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-purple-500/50 shadow-lg shadow-purple-500/30">
+                            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-purple-500/50 shadow-lg shadow-purple-500/30">
                                 <Image
                                     src={profile.avatar}
                                     alt={profile.name}
@@ -276,29 +276,29 @@ export default function ProfilePage() {
                         </div>
 
                         {/* Basic Info */}
-                        <div className="flex-1 text-center md:text-left">
-                            <h1 className="text-4xl font-bold text-white mb-2">{profile.name}</h1>
-                            <p className="text-xl text-purple-300 mb-3">{profile.title}</p>
-                            <p className="text-purple-100/70 italic mb-4">{profile.tagline}</p>
+                        <div className="flex-1 text-center">
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">{profile.name}</h1>
+                            <p className="text-lg sm:text-xl text-purple-300 mb-3">{profile.title}</p>
+                            <p className="text-sm sm:text-base text-purple-100/70 italic mb-4">{profile.tagline}</p>
 
                             {/* Contact Info */}
-                            <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-4">
-                                <div className="flex items-center gap-2 text-purple-100/80">
-                                    <MapPin className="w-4 h-4 text-purple-400" />
-                                    <span className="text-sm">{profile.location}</span>
+                            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center mb-4">
+                                <div className="flex items-center gap-2 text-purple-100/80 justify-center">
+                                    <MapPin className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                                    <span className="text-xs sm:text-sm">{profile.location}</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-purple-100/80">
-                                    <Mail className="w-4 h-4 text-purple-400" />
-                                    <span className="text-sm">{profile.email}</span>
+                                <div className="flex items-center gap-2 text-purple-100/80 justify-center">
+                                    <Mail className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                                    <span className="text-xs sm:text-sm break-all">{profile.email}</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-purple-100/80">
-                                    <Phone className="w-4 h-4 text-purple-400" />
-                                    <span className="text-sm">{profile.phone}</span>
+                                <div className="flex items-center gap-2 text-purple-100/80 justify-center">
+                                    <Phone className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                                    <span className="text-xs sm:text-sm">{profile.phone}</span>
                                 </div>
                             </div>
 
                             {/* Social Links */}
-                            <div className="flex gap-3 justify-center md:justify-start">
+                            <div className="flex gap-3 justify-center">
                                 {profile.socialLinks.map((link: any, index: number) => (
                                     <a
                                         key={index}
@@ -316,7 +316,7 @@ export default function ProfilePage() {
                         </div>
 
                         {/* Stats */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full sm:w-auto">
                             <AnimatedCounter value={profile.stats.experience} label="Years Exp." />
                             <AnimatedCounter value={profile.stats.projects} label="Projects" />
                             <AnimatedCounter value={profile.stats.clients} label="Clients" />
@@ -325,22 +325,22 @@ export default function ProfilePage() {
                     </div>
                 </Card>
 
-                <div className="grid lg:grid-cols-3 gap-8">
+                <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                     {/* Left Column */}
-                    <div className="lg:col-span-2 space-y-8">
+                    <div className="lg:col-span-2 space-y-4 sm:space-y-6 md:space-y-8">
                         {/* About Me */}
-                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-6" enableMagnetism={false}>
-                            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                                <span className="w-1 h-6 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
+                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-4 sm:p-5 md:p-6" enableMagnetism={false}>
+                            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
+                                <span className="w-1 h-5 sm:h-6 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
                                 About Me
                             </h2>
-                            <p className="text-purple-100/80 leading-relaxed mb-4">{profile.bio}</p>
-                            <p className="text-purple-100/70 leading-relaxed whitespace-pre-line">{profile.about}</p>
+                            <p className="text-sm sm:text-base text-purple-100/80 leading-relaxed mb-3 sm:mb-4">{profile.bio}</p>
+                            <p className="text-sm sm:text-base text-purple-100/70 leading-relaxed whitespace-pre-line">{profile.about}</p>
                         </Card>
 
                         {/* Experience */}
-                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-6" enableMagnetism={false}>
-                            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-4 sm:p-5 md:p-6" enableMagnetism={false}>
+                            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2">
                                 <Briefcase className="w-6 h-6 text-purple-400" />
                                 Work Experience
                             </h2>
@@ -377,8 +377,8 @@ export default function ProfilePage() {
                         </Card>
 
                         {/* Education */}
-                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-6" enableMagnetism={false}>
-                            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-4 sm:p-5 md:p-6" enableMagnetism={false}>
+                            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2">
                                 <GraduationCap className="w-6 h-6 text-purple-400" />
                                 Education
                             </h2>
@@ -410,10 +410,10 @@ export default function ProfilePage() {
                     </div>
 
                     {/* Right Column */}
-                    <div className="space-y-8">
+                    <div className="space-y-4 sm:space-y-6 md:space-y-8">
                         {/* Skills */}
-                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-6" enableMagnetism={false}>
-                            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-4 sm:p-5 md:p-6" enableMagnetism={false}>
+                            <h2 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
                                 <Code className="w-5 h-5 text-purple-400" />
                                 Core Skills
                             </h2>
@@ -431,8 +431,8 @@ export default function ProfilePage() {
                         </Card>
 
                         {/* Certifications */}
-                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-6" enableMagnetism={false}>
-                            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-4 sm:p-5 md:p-6" enableMagnetism={false}>
+                            <h2 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
                                 <Award className="w-5 h-5 text-purple-400" />
                                 Certifications
                             </h2>
@@ -448,8 +448,8 @@ export default function ProfilePage() {
                         </Card>
 
                         {/* Achievements */}
-                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-6" enableMagnetism={false}>
-                            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-4 sm:p-5 md:p-6" enableMagnetism={false}>
+                            <h2 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
                                 <Award className="w-5 h-5 text-purple-400" />
                                 Achievements
                             </h2>
@@ -465,8 +465,8 @@ export default function ProfilePage() {
                         </Card>
 
                         {/* Languages */}
-                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-6" enableMagnetism={false}>
-                            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-4 sm:p-5 md:p-6" enableMagnetism={false}>
+                            <h2 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
                                 <Globe className="w-5 h-5 text-purple-400" />
                                 Languages
                             </h2>
@@ -483,8 +483,8 @@ export default function ProfilePage() {
                         </Card>
 
                         {/* Interests */}
-                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-6" enableMagnetism={false}>
-                            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <Card className="bg-purple-900/20 border border-purple-500/30 rounded-2xl p-4 sm:p-5 md:p-6" enableMagnetism={false}>
+                            <h2 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
                                 <Heart className="w-5 h-5 text-purple-400" />
                                 Interests
                             </h2>

@@ -75,32 +75,32 @@ export default function BlogPage() {
                 className="h-screen overflow-y-auto"
                 style={{ scrollbarWidth: 'thin' }}
             >
-                <div className="space-y-8 p-6">
+                <div className="space-y-4 sm:space-y-6 md:space-y-8 p-3 sm:p-4 md:p-6 pt-16 lg:pt-6">
                     {/* Page Header */}
-                    <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border border-purple-500/30 rounded-2xl p-8">
-                        <div className="flex items-center gap-4 mb-4">
-                            <BookOpen className="w-12 h-12 text-purple-400" />
-                            <div>
-                                <h1 className="text-4xl font-bold text-white">Blog</h1>
-                                <p className="text-purple-100/70 mt-2">Thoughts, tutorials, and insights on web development</p>
+                    <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border border-purple-500/30 rounded-2xl p-4 sm:p-6 md:p-8">
+                        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                            <BookOpen className="w-10 h-10 sm:w-12 sm:h-12 text-purple-400" />
+                            <div className="text-center sm:text-left">
+                                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Blog</h1>
+                                <p className="text-sm sm:text-base text-purple-100/70 mt-1 sm:mt-2">Thoughts, tutorials, and insights on web development</p>
                             </div>
                         </div>
-                        <div className="flex gap-4 mt-6">
-                            <div className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-lg">
+                        <div className="flex flex-wrap gap-3 sm:gap-4 mt-4 sm:mt-6 justify-center sm:justify-start">
+                            <div className="px-3 sm:px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-lg">
                                 <span className="text-purple-100 font-semibold">{blogs.length}</span>
-                                <span className="text-purple-100/60 ml-2">Articles</span>
+                                <span className="text-purple-100/60 ml-2 text-xs sm:text-sm">Articles</span>
                             </div>
-                            <div className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-lg">
+                            <div className="px-3 sm:px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-lg">
                                 <span className="text-purple-100 font-semibold">
                                     {totalReads.toLocaleString()}
                                 </span>
-                                <span className="text-purple-100/60 ml-2">Total Reads</span>
+                                <span className="text-purple-100/60 ml-2 text-xs sm:text-sm">Total Reads</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Blog Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         {blogs.map((blog) => (
                             <Card
                                 key={blog._id}
@@ -108,7 +108,7 @@ export default function BlogPage() {
                                 enableMagnetism={false}
                             >
                                 {/* Cover Image */}
-                                <div className="relative h-48 overflow-hidden bg-black/20 group">
+                                <div className="relative h-40 sm:h-48 overflow-hidden bg-black/20 group">
                                     <Image
                                         src={blog.coverImage}
                                         alt={blog.title}

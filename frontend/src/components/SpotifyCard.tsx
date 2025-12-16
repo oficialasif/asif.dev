@@ -194,7 +194,7 @@ export const SpotifyCard = () => {
         >
             <div className={`relative w-full h-full transition-transform duration-700 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
                 {/* Front Side - Horizontal Controller */}
-                <div className="absolute inset-0 backface-hidden bg-gradient-to-br from-purple-900/40 to-purple-950/60 rounded-2xl border-2 border-purple-600/50 p-4 flex flex-col overflow-hidden">
+                <div className="absolute inset-0 backface-hidden bg-gradient-to-br from-purple-900/40 to-purple-950/60 rounded-2xl border-2 border-purple-600/50 p-3 sm:p-4 flex flex-col overflow-hidden">
                     <audio
                         ref={audioRef}
                         src={currentTrack.url}
@@ -204,7 +204,7 @@ export const SpotifyCard = () => {
                     />
 
                     {/* Progress Bar at Top */}
-                    <div className="mb-4">
+                    <div className="mb-3 sm:mb-4">
                         <input
                             type="range"
                             min="0"
@@ -216,54 +216,54 @@ export const SpotifyCard = () => {
                     </div>
 
                     {/* Horizontal Controls */}
-                    <div className="flex-1 flex items-center justify-between px-2">
+                    <div className="flex-1 flex items-center justify-between px-1 sm:px-2">
                         {/* Menu Icon - Opens Playlist */}
                         <button
                             onClick={() => setIsFlipped(true)}
-                            className="p-3 text-purple-300 hover:text-white transition-colors"
+                            className="p-2 sm:p-3 text-purple-300 hover:text-white transition-colors"
                             title="View playlist"
                         >
-                            <List className="w-6 h-6" />
+                            <List className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
 
                         {/* Previous Button */}
                         <button
                             onClick={previousTrack}
-                            className="p-3 text-purple-300 hover:text-white transition-colors"
+                            className="p-2 sm:p-3 text-purple-300 hover:text-white transition-colors"
                         >
-                            <SkipBack className="w-7 h-7" fill="currentColor" />
+                            <SkipBack className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" />
                         </button>
 
                         {/* Play/Pause Button (Large, Center) */}
                         <button
                             onClick={togglePlay}
-                            className="p-3 bg-white hover:bg-purple-100 rounded-full text-purple-900 transition-all shadow-lg"
+                            className="p-2.5 sm:p-3 bg-white hover:bg-purple-100 rounded-full text-purple-900 transition-all shadow-lg"
                         >
-                            {isPlaying ? <Pause className="w-6 h-6" fill="currentColor" /> : <Play className="w-6 h-6" fill="currentColor" />}
+                            {isPlaying ? <Pause className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" /> : <Play className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" />}
                         </button>
 
                         {/* Next Button */}
                         <button
                             onClick={nextTrack}
-                            className="p-3 text-purple-300 hover:text-white transition-colors"
+                            className="p-2 sm:p-3 text-purple-300 hover:text-white transition-colors"
                         >
-                            <SkipForward className="w-7 h-7" fill="currentColor" />
+                            <SkipForward className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" />
                         </button>
 
                         {/* Heart Icon - Toggle Shuffle */}
                         <button
                             onClick={() => setIsShuffled(!isShuffled)}
-                            className={`p-3 transition-colors ${isShuffled ? 'text-purple-400' : 'text-purple-300 hover:text-white'}`}
+                            className={`p-2 sm:p-3 transition-colors ${isShuffled ? 'text-purple-400' : 'text-purple-300 hover:text-white'}`}
                             title={isShuffled ? "Shuffle on" : "Shuffle off"}
                         >
-                            <Shuffle className="w-6 h-6" />
+                            <Shuffle className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
                     </div>
 
                     {/* Volume Control at Bottom */}
-                    <div className="flex items-center gap-3 mt-4">
+                    <div className="flex items-center gap-2 sm:gap-3 mt-3 sm:mt-4">
                         <button onClick={toggleMute} className="text-purple-400 hover:text-purple-300 flex-shrink-0">
-                            {isMuted || volume === 0 ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                            {isMuted || volume === 0 ? <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                         </button>
                         <input
                             type="range"

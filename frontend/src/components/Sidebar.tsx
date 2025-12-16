@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { User, Briefcase, Image as ImageIcon, Mail, Music, Home, Github, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
     { href: '/', label: 'Home', icon: Home },
@@ -16,10 +17,15 @@ const navItems = [
     { href: '/music', label: 'Music Player', icon: Music },
 ];
 
-export const Sidebar = () => {
+interface SidebarProps {
+    isOpen?: boolean;
+    onClose?: () => void;
+}
+
+export const Sidebar = ({ isOpen = true, onClose }: SidebarProps) => {
     const pathname = usePathname();
 
-    return (
+    const sidebarContent = (
         <aside className="w-72 h-screen bg-[color:var(--color-background)] border-r border-[color:var(--color-purple-border)] p-4 flex flex-col gap-3 overflow-y-auto dashboard-scroll">
             {/* Profile Section */}
             <div
@@ -54,6 +60,7 @@ export const Sidebar = () => {
                         <Link
                             key={item.href}
                             href={item.href}
+                            onClick={onClose}
                             className={cn(
                                 "group relative bg-[color:var(--color-background)] border-2 rounded-xl p-3 flex items-center gap-3 transition-all duration-300",
                                 isActive
@@ -111,5 +118,42 @@ export const Sidebar = () => {
                 </div>
             </div>
         </aside>
+    );
+
+    return (
+        <>
+            {/* Desktop Sidebar - Always visible on large screens */}
+            <div className="hidden lg:block">
+                {sidebarContent}
+            </div>
+
+            {/* Mobile Sidebar - Slide in from left */}
+            <AnimatePresence>
+                {isOpen && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            onClick={onClose}
+                            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+                        />
+
+                        {/* Sidebar */}
+                        <motion.div
+                            initial={{ x: '-100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '-100%' }}
+                            transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                            className="fixed top-0 left-0 z-50 lg:hidden"
+                        >
+                            {sidebarContent}
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+        </>
     );
 };

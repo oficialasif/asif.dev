@@ -51,15 +51,15 @@ export default function ContactPage() {
                 description="Let's connect and build something amazing together"
                 enableMagnetism={false}
             >
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
                     {/* Contact Information */}
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                         <div>
-                            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                                <span className="w-1 h-6 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
+                            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2">
+                                <span className="w-1 h-5 sm:h-6 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
                                 Get In Touch
                             </h2>
-                            <p className="text-purple-100/70 leading-relaxed mb-6">
+                            <p className="text-sm sm:text-base text-purple-100/70 leading-relaxed mb-4 sm:mb-6">
                                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
                                 Feel free to reach out through any of the channels below.
                             </p>
@@ -67,33 +67,33 @@ export default function ContactPage() {
 
                         {/* Contact Details */}
                         <div className="space-y-4">
-                            <div className="flex items-center gap-4 bg-purple-900/20 border border-purple-500/30 rounded-xl p-4 hover:border-purple-400/50 transition-all duration-300">
-                                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                                    <Mail className="w-6 h-6 text-white" />
+                            <div className="flex items-center gap-3 sm:gap-4 bg-purple-900/20 border border-purple-500/30 rounded-xl p-3 sm:p-4 hover:border-purple-400/50 transition-all duration-300">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
-                                <div>
-                                    <p className="text-purple-300 text-sm">Email</p>
-                                    <p className="text-white font-medium">{contactInfo.email}</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-4 bg-purple-900/20 border border-purple-500/30 rounded-xl p-4 hover:border-purple-400/50 transition-all duration-300">
-                                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                                    <Phone className="w-6 h-6 text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-purple-300 text-sm">Phone</p>
-                                    <p className="text-white font-medium">{contactInfo.phone}</p>
+                                <div className="min-w-0 flex-1">
+                                    <p className="text-purple-300 text-xs sm:text-sm">Email</p>
+                                    <p className="text-white font-medium text-xs sm:text-base break-all">{contactInfo.email}</p>
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-4 bg-purple-900/20 border border-purple-500/30 rounded-xl p-4 hover:border-purple-400/50 transition-all duration-300">
-                                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                                    <MapPin className="w-6 h-6 text-white" />
+                            <div className="flex items-center gap-3 sm:gap-4 bg-purple-900/20 border border-purple-500/30 rounded-xl p-3 sm:p-4 hover:border-purple-400/50 transition-all duration-300">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
-                                <div>
-                                    <p className="text-purple-300 text-sm">Location</p>
-                                    <p className="text-white font-medium">{contactInfo.location}</p>
+                                <div className="min-w-0 flex-1">
+                                    <p className="text-purple-300 text-xs sm:text-sm">Phone</p>
+                                    <p className="text-white font-medium text-xs sm:text-base">{contactInfo.phone}</p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-3 sm:gap-4 bg-purple-900/20 border border-purple-500/30 rounded-xl p-3 sm:p-4 hover:border-purple-400/50 transition-all duration-300">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                    <p className="text-purple-300 text-xs sm:text-sm">Location</p>
+                                    <p className="text-white font-medium text-xs sm:text-base">{contactInfo.location}</p>
                                 </div>
                             </div>
                         </div>
@@ -122,8 +122,8 @@ export default function ContactPage() {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="bg-purple-900/10 border border-purple-500/30 rounded-2xl p-6">
-                        <h2 className="text-xl font-bold text-white mb-6">Send a Message</h2>
+                    <div className="bg-purple-900/10 border border-purple-500/30 rounded-2xl p-4 sm:p-6">
+                        <h2 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">Send a Message</h2>
                         <form className="space-y-4">
                             <div>
                                 <label className="block text-purple-200 text-sm mb-2">Name</label>

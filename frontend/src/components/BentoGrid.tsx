@@ -159,7 +159,7 @@ export const BentoGrid = () => {
     return (
         <div
             ref={gridRef}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto p-4 bento-section"
+            className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 max-w-5xl mx-auto p-2 sm:p-4 bento-section"
             suppressHydrationWarning
         >
             {/* Profile Card - Smaller, spans 2 rows */}

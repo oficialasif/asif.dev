@@ -146,28 +146,28 @@ export default function ProjectsPage() {
                 className="h-screen overflow-y-auto"
                 style={{ scrollbarWidth: 'thin' }}
             >
-                <div className="space-y-8 p-6">
+                <div className="space-y-4 sm:space-y-6 md:space-y-8 p-3 sm:p-4 md:p-6 pt-16 lg:pt-6">
                     {/* Header Section (Matching Blog Header) */}
-                    <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border border-purple-500/30 rounded-2xl p-8">
-                        <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-                            <div className="p-4 bg-purple-500/20 rounded-2xl border border-purple-500/30 flex-shrink-0">
-                                <Code2 className="w-12 h-12 text-purple-400" />
+                    <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border border-purple-500/30 rounded-2xl p-4 sm:p-6 md:p-8">
+                        <div className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8">
+                            <div className="p-3 sm:p-4 bg-purple-500/20 rounded-2xl border border-purple-500/30 flex-shrink-0">
+                                <Code2 className="w-10 h-10 sm:w-12 sm:h-12 text-purple-400" />
                             </div>
-                            <div className="flex-1 text-center md:text-left">
-                                <h1 className="text-4xl font-bold text-white mb-2">My Projects</h1>
-                                <p className="text-xl text-purple-100/70 max-w-2xl">
+                            <div className="flex-1 text-center">
+                                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">My Projects</h1>
+                                <p className="text-sm sm:text-base md:text-xl text-purple-100/70 max-w-2xl">
                                     Showcasing a collection of my latest work, personal projects, and technical experiments.
                                     Each project represents a unique challenge and solution.
                                 </p>
 
-                                <div className="flex flex-wrap gap-4 mt-6 justify-center md:justify-start">
-                                    <div className="px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                                <div className="flex flex-wrap gap-3 sm:gap-4 mt-4 sm:mt-6 justify-center">
+                                    <div className="px-3 sm:px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg">
                                         <span className="text-purple-100 font-semibold">{projects.length}</span>
-                                        <span className="text-purple-100/60 ml-2">Total Projects</span>
+                                        <span className="text-purple-100/60 ml-2 text-xs sm:text-sm">Total Projects</span>
                                     </div>
-                                    <div className="px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                                    <div className="px-3 sm:px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg">
                                         <span className="text-purple-100 font-semibold">{totalViews.toLocaleString()}</span>
-                                        <span className="text-purple-100/60 ml-2">Total Views</span>
+                                        <span className="text-purple-100/60 ml-2 text-xs sm:text-sm">Total Views</span>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@ export default function ProjectsPage() {
                     </div>
 
                     {/* Project List */}
-                    <div className="space-y-12">
+                    <div className="space-y-6 sm:space-y-8 md:space-y-12">
                         {projects.map((project, projectIndex) => {
                             const currentImg = currentImageIndex[project._id] || 0;
                             const projectDirection = direction[project._id] || 0;
@@ -188,7 +188,7 @@ export default function ProjectsPage() {
                                 >
                                     <div className="grid lg:grid-cols-2 gap-0">
                                         {/* Image Carousel */}
-                                        <div className="relative h-[400px] lg:h-auto overflow-hidden bg-black/20 group">
+                                        <div className="relative h-[250px] sm:h-[300px] md:h-[400px] lg:h-auto overflow-hidden bg-black/20 group">
                                             <AnimatePresence initial={false} custom={projectDirection}>
                                                 <motion.div
                                                     key={project._id + "-" + currentImg}
@@ -256,19 +256,19 @@ export default function ProjectsPage() {
                                         </div>
 
                                         {/* Project Details */}
-                                        <div className="p-8 flex flex-col justify-between">
+                                        <div className="p-4 sm:p-6 md:p-8 flex flex-col justify-between">
                                             <div>
                                                 {/* Title and Date */}
-                                                <div className="flex items-start justify-between mb-4">
-                                                    <h2 className="text-2xl font-bold text-white">{project.title}</h2>
-                                                    <div className="flex items-center gap-1 text-purple-100/60 text-sm">
+                                                <div className="flex flex-col sm:flex-row items-start justify-between mb-3 sm:mb-4 gap-2">
+                                                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white">{project.title}</h2>
+                                                    <div className="flex items-center gap-1 text-purple-100/60 text-xs sm:text-sm">
                                                         <Calendar className="w-4 h-4" />
                                                         {new Date(project.createdAt || Date.now()).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                                                     </div>
                                                 </div>
 
                                                 {/* Description */}
-                                                <p className="text-purple-100/70 leading-relaxed mb-6">
+                                                <p className="text-sm sm:text-base text-purple-100/70 leading-relaxed mb-4 sm:mb-6">
                                                     {project.description}
                                                 </p>
 
